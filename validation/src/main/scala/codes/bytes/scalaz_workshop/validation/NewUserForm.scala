@@ -9,7 +9,7 @@ object NewUserForm {
   private val userIdCounter = new AtomicLong(0)
 
   // TODO: Students, fill me in
-  def validate: ValidationNel[String, NewUser] = ???
+  def validate(submission: NewUserForm): ValidationNel[ValidationError, NewUser] = ???
 
   def fromForm(form: NewUserForm): NewUser = {
     NewUser(
@@ -39,7 +39,7 @@ case class Address(
   line2: Option[String],
   city: String,
   state: String,
-  zipCode: Int // validate that it's 5 digits, or 5 followed by a dash and 4 more for ZIP+4
+  zipCode: String
 )
 
 case class NewUser(

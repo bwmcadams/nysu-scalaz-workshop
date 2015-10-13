@@ -10,7 +10,7 @@ package object validation {
 
   def isValidEmail(email: String): Boolean = emailRegex.findFirstMatchIn(email).isDefined
 
-  private val phoneRegex = """^\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$""".r
+  private val phoneRegex = """^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$""".r
 
   def isValidPhone(phone: String): Boolean = phoneRegex.findFirstMatchIn(phone).isDefined
 
@@ -21,5 +21,16 @@ package object validation {
   private val validZipCodeRegex = """^[0-9]{5}(?:-[0-9]{4})?$""".r
 
   def isValidZipCode(zip: String): Boolean = validZipCodeRegex.findFirstMatchIn(zip).isDefined
+
+
+  case class ValidationError(message: String)
+
+  val InvalidEmail     = ValidationError("Invalid Email Address")
+  val InvalidPhone     = ValidationError("Invalid Phone Number")
+  val InvalidState     = ValidationError("Invalid State in Address")
+  val InvalidZip       = ValidationError("Invalid Zip Code")
+  val EmptyGivenName   = ValidationError("Given Name Must Not Be Empty")
+  val EmptyFamilyName  = ValidationError("Family Name Must Not Be Empty")
+  val EmptyMiddleName  = ValidationError("Middle Name Be 'None', not Empty String")
 
 }
