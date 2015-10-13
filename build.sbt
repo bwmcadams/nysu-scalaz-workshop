@@ -11,17 +11,26 @@ lazy val commonSettings = Seq(
   )
 )
 
+lazy val core = (project in file(".")).
+  settings(commonSettings).
+  settings(
+    name := "scalaz-workshop"
+  )
+
 lazy val disjunctions = (project in file("disjunctions")).
   settings(commonSettings).
   settings(
-    name := "scalaz-workshop-disjunctions"
-  )
+    name := "disjunctions"
+  ).
+  dependsOn(core)
 
 lazy val validation = (project in file("validation")).
   settings(commonSettings).
   settings(
-    name := "scalaz-workshop-validation"
-  )
+    name := "validation"
+  ).
+  dependsOn(core)
+
 
 val compileOptions = Seq(
   "-deprecation",

@@ -1,5 +1,6 @@
 package codes.bytes.scalaz_workshop.validation
 
+import codes.bytes.scalaz_workshop.Address
 import org.scalatest.{MustMatchers, FlatSpec}
 import org.typelevel.scalatest.ValidationMatchers
 
@@ -91,7 +92,7 @@ class FormValidationSpec extends FlatSpec with MustMatchers with ValidationMatch
     "president@whitehouse.gov"
   )
 
-  lazy val validUserUser = NewUserForm.fromForm(validUserForm)
+  lazy val validUserUser = NewUserForm.newUserFromForm(validUserForm)
 
   lazy val validAddress = Address(
     "1600 Pennsylvania Ave NW",
